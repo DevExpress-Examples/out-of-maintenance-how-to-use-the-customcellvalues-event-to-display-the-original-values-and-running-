@@ -2,16 +2,37 @@
 *Files to look at*:
 
 * [Default.aspx](./CS/WebApplication1/Default.aspx) (VB: [Default.aspx](./VB/WebApplication1/Default.aspx))
-* [Default.aspx.cs](./CS/WebApplication1/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/WebApplication1/Default.aspx.vb))
 <!-- default file list end -->
-# How to use the CustomCellValues event to display the original values and Running Total values
+# How to display the original values and Running Total values
 <!-- run online -->
 **[[Run Online]](https://codecentral.devexpress.com/e1962/)**
 <!-- run online end -->
 
 
-<p>This example demonstrates how to show running totals for one field, while displaying typical total summaries for another using the <a href="https://documentation.devexpress.com/AspNet/DevExpressWebASPxPivotGridASPxPivotGrid_CustomCellValuetopic.aspx">CustomCellValue</a>. Note that this event is used only to customize displayed values. Thus, running total values will be used by other operations that use Data Fields: <a href="https://documentation.devexpress.com/WindowsForms/CustomDocument9726.aspx">Sorting by Summary</a>, <a href="https://documentation.devexpress.com/#WindowsForms/CustomDocument1799">Unbound Expression</a>, etc. <br><br><br><strong>See Also:</strong> <br><a href="https://www.devexpress.com/Support/Center/p/S30656">Add the capability to specify data fields for the RunningTotals feature</a> </p>
 
-<br/>
+
+<p>Starting with version 19.2 it is possible to use the new Optimize data processing engine to enable the RunningTotals feature in a specific data fields. To enable the Optimized engine, use the [OptionsData.DataProcessingEngine](https://docs.devexpress.com/CoreLibraries/DevExpress.XtraPivotGrid.PivotGridOptionsData.DataProcessingEngine) property. Then you will be able to bind fields to data using the [PivotGridField.DataBinding](https://docs.devexpress.com/CoreLibraries/DevExpress.XtraPivotGrid.PivotGridFieldBase.DataBinding) property. The following code snippet demonstrates how to define two data fields bound to the same data source column and display running summary values in one of them:
+
+```cs
+new PivotGridField() {
+    Caption = "Amount",
+    ID = "fieldAmount", // or Name = "fieldAmount",
+    Area = DevExpress.XtraPivotGrid.PivotArea.DataArea,
+    DataBinding = new DataSourceColumnBinding("ProductAmount") };
+new PivotGridField() {
+    Caption = "Running Amount",
+    ID = "fieldRunningAmount", // or Name = "fieldRunningAmount"
+    Area = DevExpress.XtraPivotGrid.PivotArea.DataArea,
+    DataBinding = new RunningTotalBinding( 
+        new DataSourceColumnBinding("ProductAmount"), 
+        DevExpress.XtraPivotGrid.CalculationPartitioningCriteria.RowValue, 
+        DevExpress.Data.PivotGrid.PivotSummaryType.Sum)};
+```
+
+ 
+
+**See Also:**
+[Add the capability to specify data fields for the RunningTotals feature](https://www.devexpress.com/Support/Center/p/S30656) 
+
 
 
