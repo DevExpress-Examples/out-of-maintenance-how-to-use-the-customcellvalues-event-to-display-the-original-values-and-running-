@@ -11,7 +11,7 @@
 
 
 
-<p>Starting with version 19.2 it is possible to use the new Optimize data processing engine to enable the RunningTotals feature in a specific data fields. To enable the Optimized engine, use the [OptionsData.DataProcessingEngine](https://docs.devexpress.com/CoreLibraries/DevExpress.XtraPivotGrid.PivotGridOptionsData.DataProcessingEngine) property. Then you will be able to bind fields to data using the [PivotGridField.DataBinding](https://docs.devexpress.com/CoreLibraries/DevExpress.XtraPivotGrid.PivotGridFieldBase.DataBinding) property. The following code snippet demonstrates how to define two data fields bound to the same data source column and display running summary values in one of them:
+Starting with version 19.2 it is possible to use the new Optimize data processing engine to enable the RunningTotals feature in a specific data fields. To enable the Optimized engine, use the [OptionsData.DataProcessingEngine](https://docs.devexpress.com/CoreLibraries/DevExpress.XtraPivotGrid.PivotGridOptionsData.DataProcessingEngine) property. Then you will be able to bind fields to data using the [PivotGridField.DataBinding](https://docs.devexpress.com/CoreLibraries/DevExpress.XtraPivotGrid.PivotGridFieldBase.DataBinding) property. The following code snippet demonstrates how to define two data fields bound to the same data source column and display running summary values in one of them:
 
 ```cs
 new PivotGridField() {
